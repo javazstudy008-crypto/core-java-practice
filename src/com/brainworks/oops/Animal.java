@@ -2,16 +2,17 @@ package com.brainworks.oops;
 
 public class Animal {
 
-    int noOfLegs;
+    public int noOfLegs;
     String animalName;
 
-    Animal(){               //no-arg(0-arg) constructor                package-private
+    public Animal()
+    {               //no-arg(0-arg) constructor                package-private
         System.out.println("parent class constructor...");
     }
-    private Animal(int abc, String animalName){            //loaded constructor: constructor loading
+    Animal(int abc, String animalName){            //loaded constructor: constructor loading
         noOfLegs = abc;
         this.animalName = animalName;
-        System.out.println("inside 1========");
+        System.out.println("inside parameterized constructor");
     }
 
     public static Animal Singleton(){
