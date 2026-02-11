@@ -2,7 +2,6 @@ package com.mutil.threading.synchro;
 
 public class DeadlockDemo {
         public static void main(String[] args) {
-
             Object resourceA = new Object();
             Object resourceB = new Object();
 
@@ -21,21 +20,21 @@ class ThreadOne extends Thread {
         this.resourceA = resourceA;
         this.resourceB = resourceB;
     }
-    public void run() {
-        synchronized (resourceA) {
-            System.out.println("ThreadOne: Locked ResourceA");
+    public void run() {                     //Thread-1 --> A -->(B)  //Thread-2 --> B -->(A)
+            synchronized (resourceA) {
+                System.out.println("ThreadOne: Locked ResourceA");
 
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-            System.out.println("ThreadOne: Waiting for ResourceB");
-            synchronized (resourceB) {
-                System.out.println("ThreadOne: Locked ResourceB");
+                System.out.println("ThreadOne: Waiting for ResourceB");
+                synchronized (resourceB) {
+                    System.out.println("ThreadOne: Locked ResourceB");
+                }
             }
-        }
     }
 }
 
@@ -49,7 +48,7 @@ class ThreadTwo extends Thread {
         this.resourceB = resourceB;
     }
     public void run() {
-        synchronized (resourceB) {
+        synchronized (resourceA) {
             System.out.println("ThreadTwo: Locked ResourceB");
 
             try {
@@ -59,7 +58,7 @@ class ThreadTwo extends Thread {
             }
 
             System.out.println("ThreadTwo: Waiting for ResourceA");
-            synchronized (resourceA) {
+            synchronized (resourceB) {
                 System.out.println("ThreadTwo: Locked ResourceA");
             }
         }

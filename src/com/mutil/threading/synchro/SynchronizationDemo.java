@@ -5,12 +5,12 @@ public class SynchronizationDemo {
 
         MyThread t1 = new MyThread(c);
         MyThread t2 = new MyThread(c);
-        MyThread22 t3 = new MyThread22(c);
-        t3.start();
-        t3.join();
+
         t1.start();
         t1.join();
         t2.start();
+
+
         t2.join();
 
         System.out.println(c.count); // Expected: 10000
@@ -52,23 +52,23 @@ class MyThread extends Thread {
 }
 
 
-class MyThread22 extends Thread{
-    Counter counter;
-
-    MyThread22(Counter counter) {
-        this.counter = counter;
-    }
-    @Override
-    public void run() {
-        try {
-            Thread.sleep(15000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        for(int i = 0; i < 5000; i++) {
-            counter.increment();
-        }
-    }
-}
+//class MyThread22 extends Thread{
+//    Counter counter;
+//
+//    MyThread22(Counter counter) {
+//        this.counter = counter;
+//    }
+//    @Override
+//    public void run() {
+//        try {
+//            Thread.sleep(15000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+//        for(int i = 0; i < 5000; i++) {
+//            counter.increment();
+//        }
+//    }
+//}
 
 
