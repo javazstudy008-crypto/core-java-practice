@@ -25,25 +25,29 @@ public class ArrayListDemo {
 
         //ArrayList vs Vector:
 
-//        ArrayList al = new ArrayList();
+        ArrayList al = new ArrayList();
 //        Vector v = new Vector();
-//
-//        Runnable implement = () -> {
-//            for(int i=0; i< 5000; i++){
-//                v.add(i);
-//            }
-//        };
-//
-//        Thread t1 = new Thread(implement);
-//        Thread t2 = new Thread(implement);
-//
-//        t1.start();
-//        t2.start();
-//
-//        t1.join();
-//        t2.join();
-//
-//        System.out.println("array size: " + v.size());
+
+        Runnable implement = () -> {
+            for(int i=0; i< 5000; i++){
+                al.add(i);
+            }
+            for(Object i: al){
+                System.out.println(Thread.currentThread().getName()+ " : " + i);
+            }
+        };
+
+        Thread t1 = new Thread(implement, "thread-1");
+        Thread t2 = new Thread(implement, "thread-2");
+
+        t1.start();
+        t2.start();
+
+        t1.join();
+        t2.join();
+
+        System.out.println("array size: " + al.size());
+
 
         //===========================
 
