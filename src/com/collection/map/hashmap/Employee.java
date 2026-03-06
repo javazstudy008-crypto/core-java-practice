@@ -1,4 +1,6 @@
-package com.collection;
+package com.collection.map.hashmap;
+
+import java.util.Objects;
 
 public class Employee implements Comparable<Employee>{
     private int employeeId;
@@ -50,13 +52,15 @@ public class Employee implements Comparable<Employee>{
     }
 
     @Override
-    public boolean equals(Object obj) {
-        Employee e = (Employee) obj;
-        return this.employeeId==e.employeeId;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return employeeId == employee.employeeId && salary == employee.salary && Objects.equals(employeeName, employee.employeeName);
     }
 
     @Override
     public int hashCode() {
-        return employeeId;
+        return Objects.hash(employeeId, employeeName, salary);
     }
 }
