@@ -25,5 +25,6 @@ public class EqualsHashCodeDemo {
         TreeSet ts = new TreeSet();
         ts.add(15);
         ts.add(null);
+
     }
 }

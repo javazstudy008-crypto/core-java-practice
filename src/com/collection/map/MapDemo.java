@@ -13,7 +13,7 @@ public class MapDemo {
         Employee e2 = new Employee(8, "Paean", 250);
         Employee e3 = new Employee(15, "Aman", 10);
         Employee e4 = new Employee(15, "Aman", 10);
-        Map<Object, Object> map = new HashMap();
+        Map map = new HashMap();
         map.put(10, e1);
         map.put(8, e2);
         map.put(15, e3);
