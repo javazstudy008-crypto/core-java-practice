@@ -18,8 +18,8 @@ public class LambdaExpressionDemo {
         demo.show();
 
         //Method-3: lambda expression
-        FunctionalInterfaceDemo lambdaDemo = ()-> System.out.println("Inside lambda expression");
-        lambdaDemo.show();
+//        FunctionalInterfaceDemo lambdaDemo = ()-> System.out.println("Inside lambda expression");
+//        lambdaDemo.show();
     }
 }
 

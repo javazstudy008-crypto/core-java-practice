@@ -1,5 +1,7 @@
 package com.collection;
 
+import java.util.*;
+
 public class Employee implements Comparable<Employee>{
     private int employeeId;
     private String employeeName;
@@ -58,5 +60,22 @@ public class Employee implements Comparable<Employee>{
     @Override
     public int hashCode() {
         return employeeId;
+    }
+
+
+    public static void main(String[] args) {
+        Map<Integer, Employee> map = new HashMap();
+        Employee e1 = new Employee(3221, "Rakesh", 125);
+        Employee e2 = new Employee(3222, "Rohan", 128);
+        map.put(e1.getEmployeeId(), e1);
+        map.put(e2.getEmployeeId(), e2);
+
+        List<String> employeeNames = new ArrayList<>();
+        Set<Integer> set = map.keySet();
+
+        for(Integer e : set){
+            Employee emp = map.get(e);
+            employeeNames.add(emp.getEmployeeName());
+        }
     }
 }
