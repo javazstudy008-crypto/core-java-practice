@@ -31,6 +31,8 @@ public class StreamApiDemo {
         List<Integer> list = List.of(10,20,5,8,7,20);
         List<Integer> list2 = Arrays.asList(10,20,50,70,8,2);
 
+        list2.stream().filter(e->e%10==0).map(e->e*2).forEach(System.out::println);
+
         List<Integer> filteredList = list.stream().filter(e->e>20).collect(Collectors.toList());
 //        System.out.println(filteredList);
 
